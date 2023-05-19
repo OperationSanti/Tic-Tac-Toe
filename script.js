@@ -13,7 +13,7 @@ document.getElementById('multiplayer').addEventListener('click', function() {
     document.getElementById('playerX').innerText = playerX + ": 0";
     document.getElementById('playerO').innerText = playerO + ": 0";
     againstAI = false;
-    currentPlayer = playerX;
+    currentPlayer = playerX; 
     startGame();
 });
 
@@ -30,6 +30,7 @@ document.getElementById('ai').addEventListener('click', function() {
         makeAIMove();
     }
 });
+
 
 document.getElementById('reset').addEventListener('click', resetGame);
 
@@ -78,7 +79,7 @@ function createBoard() {
                     }, 100);
                 } else {
                     currentPlayer = againstAI ? playerO : (currentPlayer === playerX ? playerO : playerX);
-                    updateTurnIndicator();
+                    updateTurnIndicator(); 
                     if (againstAI && currentPlayer === playerO) {
                         makeAIMove();
                     }
@@ -88,6 +89,7 @@ function createBoard() {
         ticTacToeBoard.appendChild(cell);
     }
 }
+
 
 function checkWin(player) {
     const winningCombinations = [
@@ -118,9 +120,11 @@ function resetGame() {
 }
 
 function makeAIMove() {
+
     if (checkWin(playerX) || checkWin(playerO) || currentPlayer !== playerO) {
         return;
     }
+
 
     let availableCells = [];
     for (let i = 0; i < board.length; i++) {
@@ -129,8 +133,10 @@ function makeAIMove() {
         }
     }
 
+
     let randomIndex = Math.floor(Math.random() * availableCells.length);
     let selectedCellIndex = availableCells[randomIndex];
+
 
     board[selectedCellIndex] = currentPlayer;
     let cells = Array.from(document.getElementsByClassName('cell'));
