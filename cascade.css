@@ -19,7 +19,11 @@ button {
     color: #204a47;
     border: none;
     padding: 10px 20px;
-    text-shadow: 0px 0px 2px #fff, 2px -2px 3px rgba(0,0,0,.2), -2px -2px 3px rgba(0,0,0,.2), 2px 2px 3px rgba(0,0,0,.2), -2px 2px 3px rgba(0,0,0,.2);
+    text-shadow: 0px 0px 2px #fff,
+                  2px -2px 3px rgba(0,0,0,.2),
+                  -2px -2px 3px rgba(0,0,0,.2),
+                  2px 2px 3px rgba(0,0,0,.2),
+                  -2px 2px 3px rgba(0,0,0,.2);
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
@@ -58,34 +62,50 @@ button:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+
+
 .x {
     color: #1E90FF;
-    text-shadow: 0px 0px 4px #1E90FF, 2px -2px 6px rgba(255,255,255,.5), -2px -2px 6px rgba(255,255,255,.5), 2px 2px 6px rgba(255,255,255,.5), -2px 2px 6px rgba(255,255,255,.5);
+    text-shadow: 0px 0px 4px #1E90FF,
+                  2px -2px 6px rgba(255,255,255,.5),
+                  -2px -2px 6px rgba(255,255,255,.5),
+                  2px 2px 6px rgba(255,255,255,.5),
+                  -2px 2px 6px rgba(255,255,255,.5);
 }
 
 .o {
     color: #FF0000;
-    text-shadow: 0px 0px 4px #FF0000, 2px -2px 6px rgba(255,255,255,.5), -2px -2px 6px rgba(255,255,255,.5), 2px 2px 6px rgba(255,255,255,.5), -2px 2px 6px rgba(255,255,255,.5);
+    text-shadow: 0px 0px 4px #FF0000,
+                  2px -2px 6px rgba(255,255,255,.5),
+                  -2px -2px 6px rgba(255,255,255,.5),
+                  2px 2px 6px rgba(255,255,255,.5),
+                  -2px 2px 6px rgba(255,255,255,.5);
 }
 
-#reset, #menu {
+#reset,
+#menu {
     background-color: #fff;
     color: #204a47;
     border: none;
     padding: 10px 20px;
-    text-shadow: 0px 0px 2px #fff, 2px -2px 3px rgba(0,0,0,.2), -2px -2px 3px rgba(0,0,0,.2), 2px 2px 3px rgba(0,0,0,.2), -2px 2px 3px rgba(0,0,0,.2);
+    text-shadow: 0px 0px 2px #fff,
+                  2px -2px 3px rgba(0,0,0,.2),
+                  -2px -2px 3px rgba(0,0,0,.2),
+                  2px 2px 3px rgba(0,0,0,.2),
+                  -2px 2px 3px rgba(0,0,0,.2);
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
     width: 200px;
-    display: flex;
+    display:flex;
     justify-content: center;
     align-items: center;
     margin: 10px;
 }
 
-#reset:hover, #menu:hover {
+#reset:hover,
+#menu:hover {
     background-color: #ccc;
 }
 
@@ -95,7 +115,8 @@ button:hover {
     margin-bottom: 20px;
 }
 
-#playerX, #playerO {
+#playerX,
+#playerO {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 10px;
     border-radius: 5px;
