@@ -13,18 +13,22 @@ document.getElementById('multiplayer').addEventListener('click', function() {
     document.getElementById('playerX').innerText = playerX + ": 0";
     document.getElementById('playerO').innerText = playerO + ": 0";
     againstAI = false;
+    currentPlayer = playerX; // Set the current player to Player X
     startGame();
-    resetGame();
 });
 
 document.getElementById('ai').addEventListener('click', function() {
-    playerX = "You";
+    playerX = prompt("Enter Your name:", "Player X") || 'Player X';
     playerO = "AI";
     document.getElementById('playerX').innerText = playerX + ": 0";
     document.getElementById('playerO').innerText = playerO + ": 0";
     againstAI = true;
+    currentPlayer = playerX; // Set the current player to Player X
     startGame();
     resetGame();
+    if (againstAI && currentPlayer === playerO) {
+        makeAIMove();
+    }
 });
 
 
@@ -108,12 +112,12 @@ function resetGame() {
 }
 
 function makeAIMove() {
-
+    // Check if the game is over or it's not AI's turn
     if (checkWin(playerX) || checkWin(playerO) || currentPlayer !== playerO) {
         return;
     }
 
-
+    // Find an available random cell to make a move
     let availableCells = [];
     for (let i = 0; i < board.length; i++) {
         if (!board[i]) {
@@ -121,17 +125,18 @@ function makeAIMove() {
         }
     }
 
+    // Randomly select a cell from the available cells
     let randomIndex = Math.floor(Math.random() * availableCells.length);
     let selectedCellIndex = availableCells[randomIndex];
 
-
+    // Make the AI's move
     board[selectedCellIndex] = currentPlayer;
     let cells = Array.from(document.getElementsByClassName('cell'));
     let selectedCell = cells[selectedCellIndex];
     selectedCell.innerText = 'O';
     selectedCell.classList.add('o');
 
-
+    // Check if the AI wins or it's a draw
     if (checkWin(currentPlayer)) {
         scores[currentPlayer]++;
         document.getElementById(currentPlayer === playerX ? 'playerX' : 'playerO').innerText = currentPlayer + ": " + scores[currentPlayer];
