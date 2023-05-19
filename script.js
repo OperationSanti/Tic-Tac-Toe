@@ -14,6 +14,7 @@ document.getElementById('multiplayer').addEventListener('click', function() {
     document.getElementById('playerO').innerText = playerO + ": 0";
     againstAI = false;
     startGame();
+    resetGame();
 });
 
 document.getElementById('ai').addEventListener('click', function() {
@@ -23,7 +24,9 @@ document.getElementById('ai').addEventListener('click', function() {
     document.getElementById('playerO').innerText = playerO + ": 0";
     againstAI = true;
     startGame();
+    resetGame();
 });
+
 
 document.getElementById('reset').addEventListener('click', resetGame);
 
@@ -35,6 +38,9 @@ function startGame() {
     document.getElementById('game-mode-selection').style.display = 'none';
     document.getElementById('game').style.display = 'block';
     createBoard();
+    if (againstAI && currentPlayer === playerO) {
+        makeAIMove();
+    }
 }
 
 function createBoard() {
@@ -44,7 +50,7 @@ function createBoard() {
         let cell = document.createElement('div');
         cell.classList.add('cell');
         cell.addEventListener('click', () => {
-            if (!board[i]) {
+            if (!board[i] && (againstAI || (currentPlayer === playerX || currentPlayer === playerO))) {
                 board[i] = currentPlayer;
                 cell.innerText = currentPlayer === playerX ? 'X' : 'O';
                 cell.classList.add(currentPlayer === playerX ? 'x' : 'o');
@@ -60,13 +66,18 @@ function createBoard() {
                         alert('Draw!');
                         resetGame();
                     }, 100);
+                } else {
+                    currentPlayer = againstAI ? playerO : (currentPlayer === playerX ? playerO : playerX);
+                    if (againstAI && currentPlayer === playerO) {
+                        makeAIMove();
+                    }
                 }
-                currentPlayer = currentPlayer === playerX ? playerO : playerX;
             }
         });
         ticTacToeBoard.appendChild(cell);
     }
 }
+
 
 function checkWin(player) {
     const winningCombinations = [
@@ -91,5 +102,49 @@ function resetGame() {
         cell.innerText = '';
         cell.classList.remove('x', 'o');
     });
+    if (againstAI && currentPlayer === playerO) {
+        makeAIMove();
+    }
 }
 
+function makeAIMove() {
+
+    if (checkWin(playerX) || checkWin(playerO) || currentPlayer !== playerO) {
+        return;
+    }
+
+
+    let availableCells = [];
+    for (let i = 0; i < board.length; i++) {
+        if (!board[i]) {
+            availableCells.push(i);
+        }
+    }
+
+    let randomIndex = Math.floor(Math.random() * availableCells.length);
+    let selectedCellIndex = availableCells[randomIndex];
+
+
+    board[selectedCellIndex] = currentPlayer;
+    let cells = Array.from(document.getElementsByClassName('cell'));
+    let selectedCell = cells[selectedCellIndex];
+    selectedCell.innerText = 'O';
+    selectedCell.classList.add('o');
+
+
+    if (checkWin(currentPlayer)) {
+        scores[currentPlayer]++;
+        document.getElementById(currentPlayer === playerX ? 'playerX' : 'playerO').innerText = currentPlayer + ": " + scores[currentPlayer];
+        setTimeout(() => {
+            alert(currentPlayer + ' wins!');
+            resetGame();
+        }, 100);
+    } else if (!board.includes(null)) {
+        setTimeout(() => {
+            alert('Draw!');
+            resetGame();
+        }, 100);
+    } else {
+        currentPlayer = playerX;
+    }
+}
