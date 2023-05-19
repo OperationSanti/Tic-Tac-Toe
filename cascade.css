@@ -1,0 +1,140 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #204a47;
+    color: #fff;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #fff;
+    color: #204a47;
+    border: none;
+    padding: 10px 20px;
+    text-shadow: 0px 0px 2px #fff,
+                  2px -2px 3px rgba(0,0,0,.2),
+                  -2px -2px 3px rgba(0,0,0,.2),
+                  2px 2px 3px rgba(0,0,0,.2),
+                  -2px 2px 3px rgba(0,0,0,.2);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+#tic-tac-toe-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.cell {
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cell:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+.x {
+    color: #1E90FF;
+    text-shadow: 0px 0px 4px #1E90FF,
+                  2px -2px 6px rgba(255,255,255,.5),
+                  -2px -2px 6px rgba(255,255,255,.5),
+                  2px 2px 6px rgba(255,255,255,.5),
+                  -2px 2px 6px rgba(255,255,255,.5);
+}
+
+.o {
+    color: #FF0000;
+    text-shadow: 0px 0px 4px #FF0000,
+                  2px -2px 6px rgba(255,255,255,.5),
+                  -2px -2px 6px rgba(255,255,255,.5),
+                  2px 2px 6px rgba(255,255,255,.5),
+                  -2px 2px 6px rgba(255,255,255,.5);
+}
+
+#reset,
+#menu {
+    background-color: #fff;
+    color: #204a47;
+    border: none;
+    padding: 10px 20px;
+    text-shadow: 0px 0px 2px #fff,
+                  2px -2px 3px rgba(0,0,0,.2),
+                  -2px -2px 3px rgba(0,0,0,.2),
+                  2px 2px 3px rgba(0,0,0,.2),
+                  -2px 2px 3px rgba(0,0,0,.2);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    width: 200px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+#reset:hover,
+#menu:hover {
+    background-color: #ccc;
+}
+
+#scoreboard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#playerX,
+#playerO {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#game-mode-selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    background-color: #204a47;
+    margin: 0 auto;
+}
+
+#game-mode-selection button {
+    margin: 10px;
+}
