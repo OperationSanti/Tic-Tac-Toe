@@ -124,6 +124,10 @@ button:hover {
     text-align: center;
 }
 
+#game {
+    display: none;
+}
+
 #game-mode-selection {
     display: flex;
     flex-direction: column;
@@ -134,6 +138,7 @@ button:hover {
     background-color: #204a47;
     margin: 0 auto;
 }
+
 
 #game-mode-selection button {
     margin: 10px;
